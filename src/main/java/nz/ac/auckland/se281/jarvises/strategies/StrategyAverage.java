@@ -2,7 +2,10 @@ package nz.ac.auckland.se281.jarvises.strategies;
 
 import java.util.ArrayList;
 
-public abstract class StrategyAverage implements Strategy {
+import nz.ac.auckland.se281.Utils;
+
+public class StrategyAverage extends Strategy {
+
     @Override
     public int generateSum(ArrayList<Integer> userFingerInputs, int roundsDone, int finger) {
         int total = 0;
@@ -11,6 +14,7 @@ public abstract class StrategyAverage implements Strategy {
             total += fingerInput;
         }
 
-        return (total / roundsDone + finger);
+        return (Math.round(total / roundsDone) + finger);
     }
+
 }

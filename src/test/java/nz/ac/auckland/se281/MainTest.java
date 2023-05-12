@@ -15,13 +15,13 @@ import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses({
-  MainTest.Task1.class, //
-  MainTest.Task2.class, // Uncomment this line when to start Task 2
-  // MainTest.Task3.class, // Uncomment this line when to start Task 3
-  // MainTest.Task4.class, // Uncomment this line when to start Task 4
-  // MainTest.Task5.class, // Uncomment this line when to start Task 5
-  // MainTest.Task6.class, // Uncomment this line when to start Task 5
-  // MainTest.YourTests.class, // Uncomment this line to run your own tests
+    MainTest.Task1.class, //
+    MainTest.Task2.class, // Uncomment this line when to start Task 2
+    MainTest.Task3.class, // Uncomment this line when to start Task 3
+    MainTest.Task4.class, // Uncomment this line when to start Task 4
+    MainTest.Task5.class, // Uncomment this line when to start Task 5
+// MainTest.Task6.class, // Uncomment this line when to start Task 5
+// MainTest.YourTests.class, // Uncomment this line to run your own tests
 })
 public class MainTest {
 
@@ -41,10 +41,9 @@ public class MainTest {
 
     try {
 
-      String roundOut =
-          output
-              .split(START_ROUND.getMessage(String.valueOf(round)))[1]
-              .split("Player " + player + ": fingers")[1];
+      String roundOut = output
+          .split(START_ROUND.getMessage(String.valueOf(round)))[1]
+          .split("Player " + player + ": fingers")[1];
       Pattern pattern = Pattern.compile("-?\\d+");
       Matcher matcher = pattern.matcher(roundOut);
       matcher.find();
@@ -492,11 +491,13 @@ public class MainTest {
       int sumJarvis = res[1];
       // with four rounds, the average should start!
       // expected average is
-      // 2 + 1 + 2 = 5 [of course Jarvis cannot cheat, he does not know that the current finger is
+      // 2 + 1 + 2 = 5 [of course Jarvis cannot cheat, he does not know that the
+      // current finger is
       // 4]
       // 5/3 = 1.66
       // rounded is 2
-      // because the fingers that Jarvis randomly choose is 5 the sum should be 7 = 5 + 2
+      // because the fingers that Jarvis randomly choose is 5 the sum should be 7 = 5
+      // + 2
       assertEquals(5, fingersJarvis);
       assertEquals(7, sumJarvis);
       assertTrue(
@@ -540,11 +541,13 @@ public class MainTest {
       int sumJarvis = res[1];
       // with four rounds, the average should start!
       // expected average is
-      // 2 + 1 + 2 + 4 = 9 [of course Jarvis cannot cheat, he does not know that the current finger
+      // 2 + 1 + 2 + 4 = 9 [of course Jarvis cannot cheat, he does not know that the
+      // current finger
       // is 5]
       // 9/4 = 2.25
       // rounded is 2
-      // because the fingers that Jarvis randomly choose is 2 the sum should be 4 = 2 + 2
+      // because the fingers that Jarvis randomly choose is 2 the sum should be 4 = 2
+      // + 2
       assertEquals(2, fingersJarvis);
       assertEquals(4, sumJarvis);
       assertTrue(
@@ -690,9 +693,11 @@ public class MainTest {
       res = MainTest.getPlay(4, "Jarvis", getCaptureOut());
       int fingersJarvis = res[0];
       int sumJarvis = res[1];
-      // the most common is 5 [of course Jarvis cannot cheat, he does not know that the current
+      // the most common is 5 [of course Jarvis cannot cheat, he does not know that
+      // the current
       // finger
-      // because the fingers that Jarvis randomly choose is 2 the sum should be 7 = 2 + 5
+      // because the fingers that Jarvis randomly choose is 2 the sum should be 7 = 2
+      // + 5
       assertEquals(2, fingersJarvis);
       assertEquals(7, sumJarvis);
     }
@@ -731,9 +736,11 @@ public class MainTest {
       res = MainTest.getPlay(5, "Jarvis", getCaptureOut());
       int fingersJarvis = res[0];
       int sumJarvis = res[1];
-      // the most common is 1 [of course Jarvis cannot cheat, he does not know that the current
+      // the most common is 1 [of course Jarvis cannot cheat, he does not know that
+      // the current
       // finger
-      // because the fingers that Jarvis randomly choose is 2 the sum should be 3 = 2 + 1
+      // because the fingers that Jarvis randomly choose is 2 the sum should be 3 = 2
+      // + 1
       assertEquals(2, fingersJarvis);
       assertEquals(3, sumJarvis);
       assertTrue(
@@ -884,10 +891,12 @@ public class MainTest {
       int sumJarvis = res[1];
       // with four rounds, the average should start!
       // expected average is
-      // 1 + 5 + 1 =7 [of course Jarvis cannot cheat, he does not know that the current finger is 4]
+      // 1 + 5 + 1 =7 [of course Jarvis cannot cheat, he does not know that the
+      // current finger is 4]
       // 7/3 = 2.3
       // rounded is 2
-      // because the fingers that Jarvis randomly choose is 2 the sum should be 4 = 2 + 2
+      // because the fingers that Jarvis randomly choose is 2 the sum should be 4 = 2
+      // + 2
       assertEquals(2, fingersJarvis);
       assertEquals(4, sumJarvis);
       assertTrue(
@@ -929,9 +938,11 @@ public class MainTest {
       res = MainTest.getPlay(5, "Jarvis", getCaptureOut());
       int fingersJarvis = res[0];
       int sumJarvis = res[1];
-      // the most common is 2 [of course Jarvis cannot cheat, he does not know that the current
+      // the most common is 2 [of course Jarvis cannot cheat, he does not know that
+      // the current
       // finger
-      // because the fingers that Jarvis randomly choose is 2 the sum should be 4 = 2 + 2
+      // because the fingers that Jarvis randomly choose is 2 the sum should be 4 = 2
+      // + 2
       assertEquals(2, fingersJarvis);
       assertEquals(4, sumJarvis);
       assertTrue(

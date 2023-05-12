@@ -1,10 +1,14 @@
 package nz.ac.auckland.se281.jarvises.strategies;
 
 import java.util.ArrayList;
+import nz.ac.auckland.se281.Utils;
 
-public interface Strategy {
+public abstract class Strategy {
 
-    public int generateFinger();
+    public int generateFinger() {
+        int finger = Utils.getRandomNumber(1, 5);
+        return finger;
+    }
 
-    public int generateSum(ArrayList<Integer> userFingerInputs, int roundNumber, int fingers);
+    public abstract int generateSum(ArrayList<Integer> userFingerInputs, int roundNumber, int fingers);
 }

@@ -1,6 +1,7 @@
 package nz.ac.auckland.se281.jarvises;
 
 import nz.ac.auckland.se281.Main.Difficulty;
+import nz.ac.auckland.se281.jarvises.strategies.Strategy;
 
 public class JarvisFactory {
 
@@ -8,19 +9,15 @@ public class JarvisFactory {
         switch (difficulty) {
             case EASY:
                 return new EasyJarvis();
-                break;
 
             case MEDIUM:
                 return new MediumJarvis();
-                break;
 
             case HARD:
                 return new HardJarvis();
-                break;
 
-            case MASTER:
+            default:
                 return new MasterJarvis();
-                break;
 
         }
     }
