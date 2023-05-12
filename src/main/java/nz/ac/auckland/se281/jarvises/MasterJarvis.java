@@ -18,7 +18,7 @@ public class MasterJarvis implements Jarvis {
     public int[] generateFingerAndSum(ArrayList<Integer> userFingerInputs, int roundsDone) {
 
         if (roundsDone >= 3) {
-            if (roundsDone % 2 == 0) {
+            if (roundsDone % 2 == 1) {
                 this.strategy = new StrategyAverage();
             } else {
                 this.strategy = new StrategyTop();

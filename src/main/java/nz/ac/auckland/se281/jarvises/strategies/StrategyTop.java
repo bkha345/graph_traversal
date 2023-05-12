@@ -5,11 +5,11 @@ import nz.ac.auckland.se281.Utils;
 
 public class StrategyTop extends Strategy {
 
-    int[] fingerOccurences = new int[5];
+    int[] fingerOccurences = new int[6];
     int mostOccurence = 1;
 
     @Override
-    public int generateSum(ArrayList<Integer> userFingerInputs, int roundNumber, int finger) {
+    public int generateSum(ArrayList<Integer> userFingerInputs, int roundsDone, int finger) {
         for (int fingerInput : userFingerInputs) {
             fingerOccurences[fingerInput]++;
 
@@ -17,6 +17,6 @@ public class StrategyTop extends Strategy {
                 mostOccurence = fingerInput;
             }
         }
-        return mostOccurence;
+        return (mostOccurence + finger);
     }
 }

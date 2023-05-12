@@ -17,7 +17,7 @@ public class Morra {
   Difficulty difficulty;
   Jarvis jarvis;
 
-  ArrayList<Integer> userFingerInputs = new ArrayList<Integer>();
+  ArrayList<Integer> userFingerInputs;
 
   public Morra() {
   }
@@ -29,6 +29,7 @@ public class Morra {
     this.difficulty = difficulty;
     jarvis = JarvisFactory.createJarvis(difficulty);
     roundNumber = 0;
+    userFingerInputs = new ArrayList<Integer>();
   }
 
   public void play() {
@@ -66,6 +67,7 @@ public class Morra {
 
     // adds current user input after jarvis plays current round
     userFingerInputs.add(fingers);
+
     MessageCli.PRINT_INFO_HAND.printMessage("Jarvis", Integer.toString(jarvisFingers), Integer.toString(jarvisSum));
 
     // prints result

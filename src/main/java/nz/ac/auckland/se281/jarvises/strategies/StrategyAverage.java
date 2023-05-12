@@ -14,7 +14,9 @@ public class StrategyAverage extends Strategy {
             total += fingerInput;
         }
 
-        return (Math.round(total / roundsDone) + finger);
+        int jarvisFinger = Math.round((float) total / roundsDone);
+
+        return (jarvisFinger + finger);
     }
 
 }
