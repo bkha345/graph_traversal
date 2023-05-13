@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import org.eclipse.jgit.transport.CredentialItem.Username;
 
 import nz.ac.auckland.se281.Main.Difficulty;
-import nz.ac.auckland.se281.jarvises.*;;
+import nz.ac.auckland.se281.jarvises.*;
 
 public class Morra {
 
