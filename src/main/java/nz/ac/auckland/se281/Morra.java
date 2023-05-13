@@ -2,6 +2,8 @@ package nz.ac.auckland.se281;
 
 import java.util.ArrayList;
 
+import org.eclipse.jgit.transport.CredentialItem.Username;
+
 import nz.ac.auckland.se281.Main.Difficulty;
 import nz.ac.auckland.se281.jarvises.*;;
 
@@ -16,6 +18,7 @@ public class Morra {
   String name;
   Difficulty difficulty;
   Jarvis jarvis;
+  boolean gameStarted = false;
 
   ArrayList<Integer> userFingerInputs;
 
@@ -23,6 +26,11 @@ public class Morra {
   }
 
   public void newGame(Difficulty difficulty, int pointsToWin, String[] options) {
+    // resets round number and points
+    roundNumber = 0;
+    userPoints = 0;
+    jarvisPoints = 0;
+
     name = options[0];
     MessageCli.WELCOME_PLAYER.printMessage(name);
     this.pointsToWin = pointsToWin;
@@ -30,11 +38,16 @@ public class Morra {
     jarvis = JarvisFactory.createJarvis(difficulty);
     roundNumber = 0;
     userFingerInputs = new ArrayList<Integer>();
+    gameStarted = true;
   }
 
   public void play() {
+    // checks if game has started before allowing user to play
+    if (!gameStarted) {
+      MessageCli.GAME_NOT_STARTED.printMessage();
+      return;
+    }
     String[] numbers;
-
     boolean invalid = false;
     roundNumber++;
     MessageCli.START_ROUND.printMessage(Integer.toString(roundNumber));
@@ -82,10 +95,22 @@ public class Morra {
     }
 
     if (userPoints == pointsToWin) {
-
+      MessageCli.END_GAME.printMessage(name, Integer.toString(roundNumber));
+      gameStarted = false;
+    } else if (jarvisPoints == pointsToWin) {
+      MessageCli.END_GAME.printMessage("Jarvis", Integer.toString(roundNumber));
+      gameStarted = false;
     }
   }
 
   public void showStats() {
+    if (!gameStarted) {
+      MessageCli.GAME_NOT_STARTED.printMessage();
+      return;
+    }
+    MessageCli.PRINT_PLAYER_WINS.printMessage(name, Integer.toString(userPoints),
+        Integer.toString(pointsToWin - userPoints));
+    MessageCli.PRINT_PLAYER_WINS.printMessage("Jarvis", Integer.toString(jarvisPoints),
+        Integer.toString(pointsToWin - jarvisPoints));
   }
 }
