@@ -1,26 +1,21 @@
 package nz.ac.auckland.se281;
 
 import java.util.ArrayList;
-
-import org.eclipse.jgit.transport.CredentialItem.Username;
-
-import nz.ac.auckland.se281.Main.Difficulty;
 import nz.ac.auckland.se281.jarvises.*;
+import nz.ac.auckland.se281.Main.Difficulty;
 
 public class Morra {
 
-  int roundNumber;
-  int fingers;
-  int sum;
-  int pointsToWin;
-  int userPoints = 0;
-  int jarvisPoints = 0;
-  String name;
-  Difficulty difficulty;
-  Jarvis jarvis;
-  boolean gameStarted = false;
-
-  ArrayList<Integer> userFingerInputs;
+  private int roundNumber;
+  private int fingers;
+  private int sum;
+  private int pointsToWin;
+  private int userPoints = 0;
+  private int jarvisPoints = 0;
+  private String name;
+  private Jarvis jarvis;
+  private boolean gameStarted = false;
+  private ArrayList<Integer> userFingerInputs;
 
   public Morra() {
   }
@@ -33,8 +28,10 @@ public class Morra {
 
     name = options[0];
     MessageCli.WELCOME_PLAYER.printMessage(name);
+
+    // initiliases points to win and difficulty based on user input, and creates
+    // Jarvis based on selected difficulty
     this.pointsToWin = pointsToWin;
-    this.difficulty = difficulty;
     jarvis = JarvisFactory.createJarvis(difficulty);
     roundNumber = 0;
     userFingerInputs = new ArrayList<Integer>();
@@ -47,8 +44,10 @@ public class Morra {
       MessageCli.GAME_NOT_STARTED.printMessage();
       return;
     }
+
     String[] numbers;
     boolean invalid = false;
+
     roundNumber++;
     MessageCli.START_ROUND.printMessage(Integer.toString(roundNumber));
 
@@ -71,17 +70,16 @@ public class Morra {
     // once numbers that fit conditions are inputted print out hand message
     MessageCli.PRINT_INFO_HAND.printMessage(name, Integer.toString(fingers), Integer.toString(sum));
 
-    // generates computers input and turns to string
-
+    // generates and prints computers input
     int[] jarvisInputs = jarvis.generateFingerAndSum(userFingerInputs, (roundNumber - 1));
 
     int jarvisFingers = jarvisInputs[0];
     int jarvisSum = jarvisInputs[1];
 
+    MessageCli.PRINT_INFO_HAND.printMessage("Jarvis", Integer.toString(jarvisFingers), Integer.toString(jarvisSum));
+
     // adds current user input after jarvis plays current round
     userFingerInputs.add(fingers);
-
-    MessageCli.PRINT_INFO_HAND.printMessage("Jarvis", Integer.toString(jarvisFingers), Integer.toString(jarvisSum));
 
     // prints result
     if ((jarvisFingers + fingers == jarvisSum) && (jarvisFingers + fingers != sum)) {
@@ -94,6 +92,7 @@ public class Morra {
       MessageCli.PRINT_OUTCOME_ROUND.printMessage("DRAW");
     }
 
+    // prints ame outcome and stops game if number of points to win is reached
     if (userPoints == pointsToWin) {
       MessageCli.END_GAME.printMessage(name, Integer.toString(roundNumber));
       gameStarted = false;
@@ -104,6 +103,8 @@ public class Morra {
   }
 
   public void showStats() {
+
+    // ensures game is started before printing stats
     if (!gameStarted) {
       MessageCli.GAME_NOT_STARTED.printMessage();
       return;

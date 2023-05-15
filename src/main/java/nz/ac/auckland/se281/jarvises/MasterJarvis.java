@@ -1,12 +1,9 @@
 package nz.ac.auckland.se281.jarvises;
 
 import java.util.ArrayList;
-
 import nz.ac.auckland.se281.jarvises.strategies.*;
 
 public class MasterJarvis implements Jarvis {
-
-    int action[] = new int[2];
 
     private Strategy strategy;
 
@@ -17,6 +14,7 @@ public class MasterJarvis implements Jarvis {
     @Override
     public int[] generateFingerAndSum(ArrayList<Integer> userFingerInputs, int roundsDone) {
 
+        // alternates between average and top after 3 rounds
         if (roundsDone >= 3) {
             if (roundsDone % 2 == 1) {
                 this.strategy = new StrategyAverage();
@@ -25,6 +23,7 @@ public class MasterJarvis implements Jarvis {
             }
         }
 
+        // returns array of finger and sum
         action[0] = strategy.generateFinger();
         action[1] = strategy.generateSum(userFingerInputs, roundsDone, action[0]);
         return action;

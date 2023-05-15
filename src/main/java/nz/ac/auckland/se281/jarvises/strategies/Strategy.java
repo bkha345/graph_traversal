@@ -5,6 +5,7 @@ import nz.ac.auckland.se281.Utils;
 
 public abstract class Strategy {
 
+    // all strategies return random finger
     public int generateFinger() {
         int finger = Utils.getRandomNumber(1, 5);
         return finger;
