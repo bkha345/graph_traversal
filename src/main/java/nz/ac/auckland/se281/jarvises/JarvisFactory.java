@@ -4,22 +4,27 @@ import nz.ac.auckland.se281.Main.Difficulty;
 
 public class JarvisFactory {
 
-    // uses switch case to create jarvis of that specific difficulty
-    public static Jarvis createJarvis(Difficulty difficulty) {
+  // uses switch case to create jarvis of that specific difficulty
+  public static Jarvis createJarvis(Difficulty difficulty) {
 
-        switch (difficulty) {
-            case EASY:
-                return new EasyJarvis();
+    switch (difficulty) {
 
-            case MEDIUM:
-                return new MediumJarvis();
+      // creates easy jarvis
+      case EASY:
+        return new EasyJarvis();
 
-            case HARD:
-                return new HardJarvis();
+      // creates medium jarvis
+      case MEDIUM:
+        return new MediumJarvis();
 
-            default:
-                return new MasterJarvis();
+      // creates hard jarvis
+      case HARD:
+        return new HardJarvis();
 
-        }
+      // creates master jarvis
+      default:
+        return new MasterJarvis();
+
     }
+  }
 }

@@ -1,7 +1,10 @@
 package nz.ac.auckland.se281.jarvises;
 
 import java.util.ArrayList;
-import nz.ac.auckland.se281.jarvises.strategies.*;
+import nz.ac.auckland.se281.jarvises.strategies.Strategy;
+import nz.ac.auckland.se281.jarvises.strategies.StrategyRandom;
+import nz.ac.auckland.se281.jarvises.strategies.StrategyAverage;
+import nz.ac.auckland.se281.jarvises.strategies.StrategyTop;
 
 public class MasterJarvis implements Jarvis {
 

@@ -1,7 +1,9 @@
 package nz.ac.auckland.se281.jarvises;
 
 import java.util.ArrayList;
-import nz.ac.auckland.se281.jarvises.strategies.*;
+import nz.ac.auckland.se281.jarvises.strategies.Strategy;
+import nz.ac.auckland.se281.jarvises.strategies.StrategyRandom;
+import nz.ac.auckland.se281.jarvises.strategies.StrategyAverage;
 
 public class MediumJarvis implements Jarvis {
 
