@@ -61,8 +61,12 @@ public class Morra {
       MessageCli.ASK_INPUT.printMessage();
       String input = Utils.scanner.nextLine();
       numbers = input.split(" ");
-      fingers = Integer.parseInt(numbers[0]);
-      sum = Integer.parseInt(numbers[1]);
+      if (numbers.length != 2 && input != null && !input.matches("[0-9\\s]")) {
+        invalid = true;
+      } else {
+        fingers = Integer.parseInt(numbers[0]);
+        sum = Integer.parseInt(numbers[1]);
+      }
 
       invalid = true;
     } while ((fingers < 1) | (fingers > 5) | (sum < 1) | (sum > 10));
