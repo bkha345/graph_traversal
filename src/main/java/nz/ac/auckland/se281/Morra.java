@@ -7,10 +7,10 @@ import nz.ac.auckland.se281.Main.Difficulty;
 public class Morra {
 
   private int roundNumber;
-  private int fingers = 0;
+  private int fingers;
   private int sum = 0;
   private int pointsToWin;
-  private int userPoints = 0;
+  private int userPoints;
   private int jarvisPoints = 0;
   private String name;
   private Jarvis jarvis;
@@ -42,6 +42,9 @@ public class Morra {
 
     String input;
 
+    fingers = 0;
+    sum = 0;
+
     // checks if game has started before allowing user to play
     if (!gameStarted) {
       MessageCli.GAME_NOT_STARTED.printMessage();
@@ -65,7 +68,7 @@ public class Morra {
       input = Utils.scanner.nextLine();
       numbers = input.split(" ");
 
-      if (numbers.length == 2 && Utils.isInteger(numbers[1]) && Utils.isInteger(numbers[2])) {
+      if (numbers.length == 2 && Utils.isInteger(numbers[0]) && Utils.isInteger(numbers[1])) {
         fingers = Integer.parseInt(numbers[0]);
         sum = Integer.parseInt(numbers[1]);
       }
